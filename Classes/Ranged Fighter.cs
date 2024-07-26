@@ -2,6 +2,11 @@ namespace GameDeveloperI.Classes;
 
 public class RangedFighter : Enemy
 {
+    private Dictionary<string, string> attackMessages = new Dictionary<string, string>
+    {
+        { "Shoot an Arrow", "shoots an arrow with precision!" },
+        { "Throw a Knife", "throws a knife swiftly!" }
+    };
     public int Distance { get; set; }
 
     public RangedFighter(string name) : base(name)
@@ -21,6 +26,10 @@ public class RangedFighter : Enemy
         else
         {
             base.PerformAttack(target, chosenAttack);
+            if (attackMessages.ContainsKey(chosenAttack.Name))
+            {
+                Console.WriteLine($"{Name} {attackMessages[chosenAttack.Name]}");
+            }
         }
     }
 
